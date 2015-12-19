@@ -9,7 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class ParliamentarianExpense {
 
-	private Long deputySiteId;
+	private int deputySiteId;
 	private String description;
 	private BigDecimal value;
 	private String urlDetails;
@@ -47,11 +47,11 @@ public class ParliamentarianExpense {
 		this.expenseMonthAndYear = expenseMonthAndYear;
 	}
 
-	public Long getDeputySiteId() {
+	public int getDeputySiteId() {
 		return deputySiteId;
 	}
 
-	public void setDeputySiteId(Long deputySiteId) {
+	public void setDeputySiteId(int deputySiteId) {
 		this.deputySiteId = deputySiteId;
 	}
 	
@@ -59,7 +59,8 @@ public class ParliamentarianExpense {
 	public String toString() {
 		return new ToStringBuilder(this)
 				.append("deputySiteId", deputySiteId)
-				.append("ExpenseMonthAndYear", expenseMonthAndYear)
+				.append("ExpenseMonth", expenseMonthAndYear.get(Calendar.MONTH))
+				.append("ExpenseYear", expenseMonthAndYear.get(Calendar.YEAR))
 				.append("Value", value)
 				.append("Description", description)
 				.toString();

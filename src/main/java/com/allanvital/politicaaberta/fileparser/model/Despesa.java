@@ -1,6 +1,9 @@
 package com.allanvital.politicaaberta.fileparser.model;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
+
+import org.apache.commons.lang3.text.WordUtils;
 
 import com.allanvital.politicaaberta.fileparser.dto.ParliamentarianExpense;
 
@@ -216,8 +219,17 @@ public class Despesa {
 	}
 		
 	public ParliamentarianExpense buildExpense() {
-		System.out.println("construindo expense");
-		return new ParliamentarianExpense();
+		ParliamentarianExpense expense = new ParliamentarianExpense();
+		expense.setDeputySiteId(this.ideCadastro);
+		expense.setDescription(WordUtils.capitalizeFully(this.txtDescricao));
+		expense.setValue(this.vlrDocumento);
+		Calendar calendar = Calendar.getInstance();
+		calendar.clear();
+		calendar.set(Calendar.MONTH, this.numMes);
+		calendar.set(Calendar.YEAR, this.numAno);
+		expense.setExpenseMonthAndYear(calendar);
+		
+		return expense;
 	}
 	
 }
