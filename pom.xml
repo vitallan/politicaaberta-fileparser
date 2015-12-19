@@ -61,7 +61,7 @@
 						</goals>
 						<phase>package</phase>
 						<configuration>
-							<finalName>politicaaberta</finalName>
+							<finalName>politicaaberta-fileparser</finalName>
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
