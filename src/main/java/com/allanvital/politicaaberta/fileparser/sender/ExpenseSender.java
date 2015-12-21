@@ -10,6 +10,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import com.allanvital.politicaaberta.fileparser.dto.Deputy;
 import com.allanvital.politicaaberta.fileparser.dto.ParliamentarianExpense;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,13 +24,21 @@ public class ExpenseSender {
 	}
 	
 	public void send(ParliamentarianExpense expense) throws JsonProcessingException {
+		this.send(expense, "/expense");
+	}
+	
+	public void send(Deputy deputy) throws JsonProcessingException {
+		this.send(deputy, "/deputy");
+	}
+	
+	private <T> void send(T object, String urlPath) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
-		System.out.println("Tentando enviar expense " + expense);
-		String jsonDeputy = mapper.writeValueAsString(expense);
-		HttpPost request = new HttpPost("http://politicaaberta.com/expense");
+		System.out.println("Tentando enviar " + object.getClass().getName() + " = " + object);
+		String json = mapper.writeValueAsString(object);
+		HttpPost request = new HttpPost("http://politicaaberta.com" + urlPath);
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		try {
-			StringEntity params = new StringEntity(jsonDeputy, ContentType.APPLICATION_JSON);
+			StringEntity params = new StringEntity(json, ContentType.APPLICATION_JSON);
 			request.addHeader("token", token);
 			request.setEntity(params);
 			HttpResponse response = httpClient.execute(request);

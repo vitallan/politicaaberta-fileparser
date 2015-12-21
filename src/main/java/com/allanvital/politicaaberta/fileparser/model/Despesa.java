@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import org.apache.commons.lang3.text.WordUtils;
 
+import com.allanvital.politicaaberta.fileparser.dto.Deputy;
 import com.allanvital.politicaaberta.fileparser.dto.ParliamentarianExpense;
 
 public class Despesa {
@@ -230,6 +231,17 @@ public class Despesa {
 		expense.setExpenseMonthAndYear(calendar);
 		
 		return expense;
+	}
+	
+	public Deputy buildDeputy() {
+		Deputy deputy = new Deputy();
+		deputy.setSiteId(this.ideCadastro);
+		deputy.setParty(this.sgPartido);
+		deputy.setName(this.txNomeParlamentar);
+		deputy.setUf(this.sgUF);
+		deputy.setSecondarySiteId(this.nuCarteiraParlamentar);
+		
+		return deputy;
 	}
 	
 }

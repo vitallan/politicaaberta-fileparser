@@ -34,6 +34,7 @@ public class SummarizedExpenseXmlReader {
 			if (xss.next() == XMLStreamConstants.START_ELEMENT && xss.getLocalName().equals("DESPESA")) {
 				JAXBElement<Despesa> unmarshalledObj = unmarshaller.unmarshal(xss, Despesa.class);
 				Despesa despesa = unmarshalledObj.getValue();
+				sender.send(despesa.buildDeputy());
 				sender.send(despesa.buildExpense());
 			}
 		}
