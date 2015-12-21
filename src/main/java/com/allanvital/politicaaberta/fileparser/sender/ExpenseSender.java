@@ -46,7 +46,7 @@ public class ExpenseSender {
 				throw new IOException("resultado nao foi OK " + response.getStatusLine().getStatusCode());
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 	
