@@ -239,7 +239,7 @@ public class Despesa {
 		deputy.setParty(this.sgPartido);
 		deputy.setName(WordUtils.capitalizeFully(this.txNomeParlamentar));
 		deputy.setUf(this.sgUF);
-		deputy.setSecondarySiteId(this.nuCarteiraParlamentar);
+		//deputy.setSecondarySiteId(this.nuCarteiraParlamentar);
 		
 		return deputy;
 	}
