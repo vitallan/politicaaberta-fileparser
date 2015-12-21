@@ -237,7 +237,7 @@ public class Despesa {
 		Deputy deputy = new Deputy();
 		deputy.setSiteId(this.ideCadastro);
 		deputy.setParty(this.sgPartido);
-		deputy.setName(this.txNomeParlamentar);
+		deputy.setName(WordUtils.capitalizeFully(this.txNomeParlamentar));
 		deputy.setUf(this.sgUF);
 		deputy.setSecondarySiteId(this.nuCarteiraParlamentar);
 		
