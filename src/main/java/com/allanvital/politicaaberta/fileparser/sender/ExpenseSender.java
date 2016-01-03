@@ -35,7 +35,7 @@ public class ExpenseSender {
 		ObjectMapper mapper = new ObjectMapper();
 		System.out.println("Tentando enviar " + object.getClass().getName() + " = " + object);
 		String json = mapper.writeValueAsString(object);
-		HttpPost request = new HttpPost("http://politicaaberta.com" + urlPath);
+		HttpPost request = new HttpPost("http://politicaaberta.com/api" + urlPath);
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		try {
 			StringEntity params = new StringEntity(json, ContentType.APPLICATION_JSON);
