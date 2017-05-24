@@ -1,0 +1,6 @@
+language: java
+script:
+- ./mvnw clean install
+- wget http://www.camara.gov.br/cotas/AnoAtual.zip
+- unzip AnoAtual.zip
+- java -jar target/politicaaberta-fileparser-jar-with-dependencies.jar AnoAtual.xml TOKEN
